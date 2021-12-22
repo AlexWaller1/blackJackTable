@@ -11,6 +11,10 @@ console.log("A Gambler's Anatomy");
 
 const startGameBtn = document.getElementById("start-button");
 
+const tableDiv = document.getElementById("table-div");
+
+const moneyInputMsg = document.getElementById("money-input-msg");
+
 const hearts = [
   {
     name: "2 of Hearts",
@@ -287,3 +291,38 @@ const fullDeck = [...hearts, ...spades, ...clubs, ...hearts];
 
 let count = 0;
 let moneyBet = 0;
+let winnings = 0;
+
+console.log("-----------------------------------------");
+console.log("-----------------------------------------");
+
+startGameBtn.addEventListener("click", function () {
+  tableDiv.innerHTML = "";
+  // create elements
+  const moneyBetHeader = document.createElement("h2");
+  moneyBetHeader.innerHTML = "How Much Do You Want To Bet?";
+  moneyBetHeader.id = "money-bet-header";
+  //....................................
+  const moneyBetInput = document.createElement("input");
+  moneyBetInput.placeholder = "Money Bet...";
+  moneyBetInput.id = "money-bet-input";
+  //.........................................
+  const moneyBetInputBtn = document.createElement("button");
+  moneyBetInputBtn.innerHTML = "Submit Your Bet";
+  moneyBetInputBtn.id = "money-bet-input-btn";
+  // append elements
+  tableDiv.append(moneyBetHeader);
+  tableDiv.append(moneyBetInput);
+  tableDiv.append(moneyBetInputBtn);
+  //......................................
+  moneyBetInputBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (moneyBetInput.value.trim() == "") {
+      moneyInputMsg.innerHTML = "Please Enter A Value";
+    } else if (isNaN(moneyBetInput.value) == true) {
+      moneyInputMsg.innerHTML = "Must Be Numerical Value";
+    } else {
+      moneyInputMsg.innerHTML = "Valid Input";
+    }
+  });
+});

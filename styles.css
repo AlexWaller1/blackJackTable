@@ -9,10 +9,41 @@ body {
   text-align: center;
   font-weight: 700;
   margin-bottom: 50px;
+  margin-top: 25px;
 }
 
 #start-button {
   margin-top: 50px;
   margin: 0 auto;
   display: block;
+}
+
+#money-bet-header {
+  margin-top: 25px;
+  color: rgb(118, 44, 44);
+  font-weight: 600;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+#money-bet-input {
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 25px;
+}
+
+#money-bet-input-btn {
+  margin: 0 auto;
+  display: block;
+  background-color: rgb(239, 240, 241);
+  border-radius: 8px;
+  color: black;
+  padding: 7px 20px;
+}
+
+#money-input-msg {
+  color: rgb(118, 44, 44);
+  text-align: center;
+  margin-top: 25px;
+  font-size: x-large;
 }
