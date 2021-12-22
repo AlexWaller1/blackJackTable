@@ -322,7 +322,9 @@ startGameBtn.addEventListener("click", function () {
     } else if (isNaN(moneyBetInput.value) == true) {
       moneyInputMsg.innerHTML = "Must Be Numerical Value";
     } else {
-      moneyInputMsg.innerHTML = "Valid Input";
+      moneyInputMsg.innerHTML = `Money Bet: $${moneyBetInput.value}`;
+      moneyBet = parseFloat(moneyBetInput.value);
+      console.log(moneyBet);
     }
   });
 });
