@@ -15,6 +15,10 @@ const tableDiv = document.getElementById("table-div");
 
 const moneyInputMsg = document.getElementById("money-input-msg");
 
+const gamePlayDiv = document.getElementById("game-play-div");
+
+const startDiv = document.getElementById("start-div");
+
 const hearts = [
   {
     name: "2 of Hearts",
@@ -289,14 +293,42 @@ const diamonds = [
 
 const fullDeck = [...hearts, ...spades, ...clubs, ...hearts];
 
-let count = 0;
+console.log("--------------------------------------------------");
+
+console.log(fullDeck);
+
+function shuffleDeck(array) {
+  let j = 0;
+  let temp = 0;
+  let i = 0;
+
+  for (; i < array.length; i++) {
+    // within the loop we swap the indexes of the current iteration
+    // with a random array element
+    j = Math.floor(Math.random() * array.length);
+    temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array;
+}
+
+console.log("--------------------------------------------------");
+
+let playerCount = 0;
+let dealerCount = 0;
 let moneyBet = 0;
 let winnings = 0;
 
 console.log("-----------------------------------------");
 console.log("-----------------------------------------");
 
+const startDealBtn = document.createElement("button");
+startDealBtn.innerHTML = "Click Here To Start Game";
+startDealBtn.id = "start-deal-btn";
+
 startGameBtn.addEventListener("click", function () {
+  startDiv.removeChild(startGameBtn);
   tableDiv.innerHTML = "";
   // create elements
   const moneyBetHeader = document.createElement("h2");
@@ -325,6 +357,15 @@ startGameBtn.addEventListener("click", function () {
       moneyInputMsg.innerHTML = `Money Bet: $${moneyBetInput.value}`;
       moneyBet = parseFloat(moneyBetInput.value);
       console.log(moneyBet);
+      moneyBetHeader.innerHTML = "Ready To Start The Game";
+      tableDiv.removeChild(moneyBetInput);
+      tableDiv.removeChild(moneyBetInputBtn);
+      gamePlayDiv.append(startDealBtn);
     }
   });
+});
+
+startDealBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  console.log("A Gambler's Anatomy");
 });
