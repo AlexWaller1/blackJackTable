@@ -1,0 +1,19 @@
+{
+  "name": "blackjacktable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "blackJack.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexWaller1/blackJackTable.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexWaller1/blackJackTable/issues"
+  },
+  "homepage": "https://github.com/AlexWaller1/blackJackTable#readme"
+}

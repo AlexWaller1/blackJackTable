@@ -12,6 +12,40 @@ body {
   margin-top: 25px;
 }
 
+#dealer-card {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+#dealer-card-2 {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+#dealer-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#player-card {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+#player-card-2 {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+#player-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
 #start-button {
   margin-top: 50px;
   margin: 0 auto;
@@ -23,6 +57,10 @@ body {
   color: rgb(118, 44, 44);
   font-weight: 600;
   margin-bottom: 25px;
+  text-align: center;
+}
+
+#game-result-header {
   text-align: center;
 }
 
@@ -50,9 +88,23 @@ body {
   padding: 7px 20px;
 }
 
+#next-hand-btn {
+  margin: 0 auto;
+  display: block;
+  background-color: rgb(239, 240, 241);
+  border-radius: 8px;
+  color: black;
+  padding: 7px 35px;
+  margin-top: 25px;
+}
+
 #money-input-msg {
   color: rgb(118, 44, 44);
   text-align: center;
   margin-top: 25px;
   font-size: x-large;
+}
+
+#dealer-list {
+  margin-bottom: 150px;
 }

@@ -19,6 +19,10 @@ const gamePlayDiv = document.getElementById("game-play-div");
 
 const startDiv = document.getElementById("start-div");
 
+const dealerList = document.getElementById("dealer-list");
+
+const playerList = document.getElementById("player-list");
+
 const hearts = [
   {
     name: "2 of Hearts",
@@ -291,7 +295,7 @@ const diamonds = [
   }
 ];
 
-const fullDeck = [...hearts, ...spades, ...clubs, ...hearts];
+let fullDeck = [...hearts, ...spades, ...clubs, ...diamonds];
 
 console.log("--------------------------------------------------");
 
@@ -319,9 +323,20 @@ let playerCount = 0;
 let dealerCount = 0;
 let moneyBet = 0;
 let winnings = 0;
+let count = 0;
 
 console.log("-----------------------------------------");
 console.log("-----------------------------------------");
+
+// button if you want to add 11 for Ace
+const aceBtnEleven = document.createElement("button");
+aceBtnEleven.innerHTML = "Add 11 For Ace";
+aceBtnEleven.id = "ace-btn-eleven";
+
+// button if you want to add 1 for Ace
+const aceBtnOne = document.createElement("button");
+aceBtnOne.innerHTML = "Add 1 For Ace";
+aceBtnOne.id = "ace-btn-one";
 
 const startDealBtn = document.createElement("button");
 startDealBtn.innerHTML = "Click Here To Start Game";
@@ -365,7 +380,85 @@ startGameBtn.addEventListener("click", function () {
   });
 });
 
+console.log("---------------------------------------------");
+console.log("----------------------------------------");
+
+const nextHandBtn = document.createElement("button");
+nextHandBtn.innerHTML = "Play Next Hand";
+nextHandBtn.id = "next-hand-btn";
+const stayHandBtn = document.createElement("button");
+
 startDealBtn.addEventListener("click", function (e) {
   e.preventDefault();
   console.log("A Gambler's Anatomy");
+  fullDeck = shuffleDeck(fullDeck);
+  console.log(fullDeck);
+  gamePlayDiv.removeChild(startDealBtn);
+  // dealer's hand
+  const dealerHeader = document.createElement("h2");
+  dealerHeader.id = "dealer-header";
+  dealerList.append(dealerHeader);
+  const dealerCard = document.createElement("h3");
+  dealerCard.id = "dealer-card";
+  dealerCard.appendChild(document.createTextNode(fullDeck[count].name));
+  dealerList.append(dealerCard);
+  dealerCount = dealerCount + fullDeck[count].value;
+  dealerHeader.innerHTML = `Dealer Count: ${dealerCount}`;
+  count++;
+  // player's hand
+  const playerHeader = document.createElement("h2");
+  playerHeader.id = "player-header";
+  playerList.append(playerHeader);
+  const playerCard = document.createElement("h3");
+  playerCard.id = "player-card";
+  playerCard.appendChild(document.createTextNode(fullDeck[count].name));
+  playerList.append(playerCard);
+  playerCount = playerCount + fullDeck[count].value;
+  playerHeader.innerHTML = `Player Count: ${playerCount}`;
+  count++;
+  // appending next hand button
+  gamePlayDiv.append(nextHandBtn);
+  // add functionality to nextHandBtn
+  nextHandBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    // making headers
+    const gameResultHeader = document.createElement("h1");
+    gameResultHeader.id = "game-result-header";
+    gameResultHeader.innerHTML = "";
+    gamePlayDiv.append(gameResultHeader);
+
+    // drawing new card for dealer
+    const dealerCard2 = document.createElement("h3");
+    dealerCard2.id = "dealer-card-2";
+    dealerCard2.appendChild(document.createTextNode(fullDeck[count].name));
+    dealerCount = dealerCount + fullDeck[count].value;
+    dealerHeader.innerHTML = `Dealer Count: ${dealerCount}`;
+    dealerList.append(dealerCard2);
+    count++;
+    // drawing new card for player
+    const playerCard2 = document.createElement("h3");
+    playerCard2.id = "player-card-2";
+    playerCard2.appendChild(document.createTextNode(fullDeck[count].name));
+    playerCount = playerCount + fullDeck[count].value;
+    playerHeader.innerHTML = `Player Count: ${playerCount}`;
+    playerList.append(playerCard2);
+    count++;
+    if (dealerCount == 21) {
+      gameResultHeader.innerHTML = "The House Wins!";
+      gamePlayDiv.removeChild(nextHandBtn);
+      // if player gets 21
+    } else if (playerCount == 21) {
+      gameResultHeader.innerHTML = "The Guest Wins!";
+      gamePlayDiv.removeChild(nextHandBtn);
+
+      // if dealer goes over 21
+    } else if (dealerCount > 21) {
+      gameResultHeader.innerHTML = "The Guest Wins!";
+      gamePlayDiv.removeChild(nextHandBtn);
+      // if player goes over 21
+    } else if (playerCount > 21) {
+      gameResultHeader.innerHTML = "The House Wins!";
+      gamePlayDiv.removeChild(nextHandBtn);
+    }
+  });
 });
