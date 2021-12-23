@@ -79,6 +79,15 @@ body {
   padding: 7px 20px;
 }
 
+#end-game-btn {
+  margin: 0 auto;
+  display: block;
+  background-color: rgb(239, 240, 241);
+  border-radius: 8px;
+  color: black;
+  padding: 7px 20px;
+}
+
 #start-deal-btn {
   margin: 0 auto;
   display: block;

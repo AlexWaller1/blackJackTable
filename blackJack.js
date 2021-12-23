@@ -387,6 +387,10 @@ const nextHandBtn = document.createElement("button");
 nextHandBtn.innerHTML = "Play Next Hand";
 nextHandBtn.id = "next-hand-btn";
 const stayHandBtn = document.createElement("button");
+//........................................
+const endGameBtn = document.createElement("button");
+endGameBtn.innerHTML = "End Game";
+endGameBtn.id = "end-game-btn";
 
 startDealBtn.addEventListener("click", function (e) {
   e.preventDefault();
@@ -446,19 +450,31 @@ startDealBtn.addEventListener("click", function (e) {
     if (dealerCount == 21) {
       gameResultHeader.innerHTML = "The House Wins!";
       gamePlayDiv.removeChild(nextHandBtn);
+      gamePlayDiv.append(endGameBtn);
       // if player gets 21
     } else if (playerCount == 21) {
       gameResultHeader.innerHTML = "The Guest Wins!";
       gamePlayDiv.removeChild(nextHandBtn);
-
+      gamePlayDiv.append(endGameBtn);
       // if dealer goes over 21
     } else if (dealerCount > 21) {
       gameResultHeader.innerHTML = "The Guest Wins!";
       gamePlayDiv.removeChild(nextHandBtn);
+      gamePlayDiv.append(endGameBtn);
       // if player goes over 21
     } else if (playerCount > 21) {
       gameResultHeader.innerHTML = "The House Wins!";
       gamePlayDiv.removeChild(nextHandBtn);
+      gamePlayDiv.append(endGameBtn);
     }
   });
+});
+
+// adding functionality for end game button
+endGameBtn.addEventListener("click", function () {
+  count = 0;
+  playerCount = 0;
+  dealerCount;
+  gamePlayDiv.innerHTML = "";
+  startDiv.append(startGameBtn);
 });
